@@ -12,20 +12,26 @@
       <el-menu-item index="1">首页</el-menu-item>
       <el-menu-item index="2">图书管理</el-menu-item>
       <el-menu-item index="3">订单管理</el-menu-item>
+      <!-- 等写好在放出来吧... -->
       <el-menu-item index="4" disabled>账单查询</el-menu-item>
     </el-menu>
     <el-container>
       <!-- 手动调的78px -->
       <el-main
         :style="`background-color: #e9eef3; height: ${windowHeight - 78}px`"
-        ><router-view></router-view></el-main
-      >
+        ><transition name="el-zoom-in-top" :appear="true"
+          ><router-view></router-view></transition
+      ></el-main>
       <el-aside
         :width="`${parseInt(windowWidth * 0.25)}px`"
         :style="`background-color: #d3dce6; height: ${windowHeight - 78}px`"
       >
-        <UserProfile :totalWidth="windowWidth" />
-        <AsideCom :totalWidth="windowWidth" />
+        <transition name="el-zoom-in-top" :appear="true">
+          <UserProfile :totalWidth="windowWidth"
+        /></transition>
+        <transition name="el-zoom-in-top" :appear="true">
+          <AsideCom :totalWidth="windowWidth"
+        /></transition>
       </el-aside>
     </el-container>
   </div>
@@ -51,12 +57,12 @@ export default {
     handleSelect(key, keyPath) {
       console.log(key, "@", keyPath);
       // 这个key是字符串型数据, 但不严格匹配2=="2"是能配上的, 不能配上2==="2"
-      if(key==="1"){
-        this.$router.replace('homepage');
+      if (key === "1") {
+        this.$router.replace("homepage");
       } else if (key === "2") {
-        this.$router.replace('bookmanage');
-      } else if (key === "3"){
-        this.$router.replace('orderform');
+        this.$router.replace("bookmanage");
+      } else if (key === "3") {
+        this.$router.replace("orderform");
       }
     },
   },
