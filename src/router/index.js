@@ -9,6 +9,7 @@ import BookManage from '../pages/BookManage.vue'
 import HomePage from '../pages/HomePage.vue'
 import OrderForm from '../pages/OrderForm.vue'
 import LoginPage from '../pages/LoginPage.vue'
+import BillSearch from '../pages/BillSearch.vue'
 
 const router = new VueRouter({
     routes: [
@@ -26,6 +27,11 @@ const router = new VueRouter({
             name: 'homepage',
             path: '/homepage',
             component: HomePage,
+        },
+        {
+            name: 'billsearch',
+            path: '/billsearch',
+            component: BillSearch,
         },
         // 设置一个默认首页...
         {
@@ -46,10 +52,14 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     // 设置前置路由守卫, 比对用户信息是否在vuex中
     // 倘若在, 则可以正常放行, 否则重定向到登录页面
-    if (to.path === '/login') {
-        next()
+    if (localStorage.getItem('username') === null) {
+        if (to.path == '/login') {
+            next()
+        } else {
+            next('/login')
+        }
     } else {
-        next('/login')
+        next()
     }
 })
 

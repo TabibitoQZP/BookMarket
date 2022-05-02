@@ -3,6 +3,6 @@ module.exports = defineConfig({
   transpileDependencies: true,
   devServer:{
     // 后端api开在6666吧...
-    proxy:'http://localhost:6666/'
+    proxy:'http://124.222.64.160:8421/'
   }
 })

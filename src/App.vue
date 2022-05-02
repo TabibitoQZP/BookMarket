@@ -13,7 +13,7 @@
       <el-menu-item index="2">图书管理</el-menu-item>
       <el-menu-item index="3">订单管理</el-menu-item>
       <!-- 等写好在放出来吧... -->
-      <el-menu-item index="4" disabled>账单查询</el-menu-item>
+      <el-menu-item index="4">账单查询</el-menu-item>
     </el-menu>
     <el-container>
       <!-- 手动调的78px -->
@@ -63,6 +63,8 @@ export default {
         this.$router.replace("bookmanage");
       } else if (key === "3") {
         this.$router.replace("orderform");
+      } else if(key==='4'){
+        this.$router.replace("billsearch");
       }
     },
   },
