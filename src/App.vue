@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <el-menu
-      :default-active="activeIndex2"
+      :default-active="activeIndex1"
       class="el-menu-demo"
       mode="horizontal"
       @select="handleSelect"
@@ -63,7 +63,7 @@ export default {
         this.$router.replace("bookmanage");
       } else if (key === "3") {
         this.$router.replace("orderform");
-      } else if(key==='4'){
+      } else if (key === "4") {
         this.$router.replace("billsearch");
       }
     },
@@ -77,6 +77,9 @@ export default {
       this.windowHeight = window.innerHeight;
       this.windowWidth = window.innerWidth;
     });
+    // window.onunload = function () {
+    //   localStorage.clear();
+    // };
   },
 };
 </script>

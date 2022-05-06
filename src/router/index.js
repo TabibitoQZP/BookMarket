@@ -3,6 +3,7 @@
 */
 
 import VueRouter from "vue-router"
+import moment from "moment"
 
 // 引入组件库
 import BookManage from '../pages/BookManage.vue'
@@ -52,6 +53,11 @@ const router = new VueRouter({
 router.beforeEach((to, from, next) => {
     // 设置前置路由守卫, 比对用户信息是否在vuex中
     // 倘若在, 则可以正常放行, 否则重定向到登录页面
+    // 设置一个日期本地存储, 对着日期不匹配时清空本地存储, 表明登录权限保留一天
+    if (moment(moment.now()).format('YYYY-MM-DD') != localStorage.getItem('date')) {
+        console.log('日期不匹配');
+        localStorage.clear();
+    }
     if (localStorage.getItem('username') === null) {
         if (to.path == '/login') {
             next()
@@ -59,7 +65,11 @@ router.beforeEach((to, from, next) => {
             next('/login')
         }
     } else {
-        next()
+        if (to.path == '/login') {
+            next('/')
+        } else {
+            next()
+        }
     }
 })
 

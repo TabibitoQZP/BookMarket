@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>这是一个未完成的首页, 应该也完成不了了...</h1>
+    <h1>自定义首页, 可以随时用</h1>
     <div class="block">
       <el-carousel trigger="click" height="640px">
         <el-carousel-item v-for="item in 4" :key="item">
